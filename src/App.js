@@ -1,26 +1,59 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import data from './data'
+import styled from 'styled-components'
 
-function App() {
+const Grid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+
+const Cell = styled.div`
+  &:nth-child(1) {
+    flex: 0 0 30%;
+  }
+  &:nth-child(2) {
+    flex: 0 0 16%;
+    ${props => props.active && `
+      background: #ff00ff;
+    `}
+  }
+  &:nth-child(3) {
+    flex: 0 0 16%;
+    ${props => props.active && `
+      background: #ff00ff;
+    `}
+  }
+  &:nth-child(4) {
+    flex: 0 0 16%;
+    ${props => props.active && `
+      background: #ff00ff;
+    `}
+  }
+  &:nth-child(5) {
+    flex: 0 0 16%;
+    ${props => props.active && `
+      background: #ff00ff;
+    `}
+  }
+ 
+`
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Grid>
+      {data.map(item => 
+        <React.Fragment key={item.id}>
+          <Cell >{item.title}</Cell>
+          {item.cols.map((item, index) => 
+            <Cell key={index} active={item === true}>bla</Cell>
+          )}
+        </React.Fragment>
+          )}
+      </Grid>
     </div>
-  );
+  )
 }
 
 export default App;
