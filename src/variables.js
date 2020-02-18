@@ -1,0 +1,7 @@
+export const violet = '#7055FF'
+export const violetLight = '#EDE8FA' 
+export const purple = '#4E22D0'
+export const textLarge = '24px'
+export const textMedium = '20px'
+export const textSmall = '16px'
+export const textExtraLarge = '28px'
