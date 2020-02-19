@@ -1,12 +1,15 @@
 import React from 'react'
 import CategoryTemplate from './CategoryTemplate'
+import Premium from '../../images/premium.svg'
 
-const CategoryPremiumSecuritySingle = () => (
+const CategoryPremiumSecuritySingle = ({ buttonText }) => (
   <CategoryTemplate
-    title="Free Antivirus"
+    img={Premium}
+    title="premium security"
     device="Single-Device"
-    img
-    price="Free"
+    price="$69.99"
+    buttonText={buttonText}
+    year
   />
 )
 

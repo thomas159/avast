@@ -1,11 +1,13 @@
 import React from 'react'
 import CategoryTemplate from './CategoryTemplate'
+import Free from '../../images/free.svg'
 
-const CategoryFreeAntiVirus = () => (
+const CategoryFreeAntiVirus = ({ buttonText }) => (
   <CategoryTemplate
+    img={Free}
     title="Free Antivirus"
-    img
     price="Free"
+    buttonText={buttonText}
   />
 )
 

@@ -4,10 +4,15 @@ import CategoryFreeAntiVirus from './CategoryFreeAntiVirus'
 import CategoryPremiumSecuritySingle from './CategoryPremiumSecuritySingle';
 import CategoryPremiumSecurityMulti from './CategoryPremiumSecurityMulti'
 import CategoryUltimate from './CategoryUltimate'
+import { Sticky } from 'react-sticky'
 
 const Wrap = styled.div`
+  position: absolute;
+  top: 0;
   display: flex;
   flex: auto;
+  background: #fff;
+  box-shadow: -1px 25px 15px -1px rgba(0,0,0,0.17);
 `
 
 const Cell = styled.div`
@@ -28,24 +33,26 @@ const Cell = styled.div`
   }
 `
 
-const Sticky = () => {
+const StickyBlock = () => {
   return (
-    <Wrap>
-      <Cell></Cell>
-      <Cell>
-        <CategoryFreeAntiVirus />
-      </Cell>
-      <Cell>
-        <CategoryPremiumSecuritySingle />
-      </Cell>
-      <Cell>
-        <CategoryPremiumSecurityMulti />
-      </Cell>
-      <Cell>
-        <CategoryUltimate />
-      </Cell>
-    </Wrap>
+    <Sticky topOffset={380}>{({ style }) => 
+      <Wrap>
+        <Cell></Cell>
+        <Cell>
+          <CategoryFreeAntiVirus />
+        </Cell>
+        <Cell>
+          <CategoryPremiumSecuritySingle />
+        </Cell>
+        <Cell>
+          <CategoryPremiumSecurityMulti />
+        </Cell>
+        <Cell>
+          <CategoryUltimate />
+        </Cell>
+      </Wrap>
+    }</Sticky>
   )
 }
 
-export default Sticky
+export default StickyBlock

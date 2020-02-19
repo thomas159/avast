@@ -1,11 +1,14 @@
 import React from 'react'
 import CategoryTemplate from './CategoryTemplate'
+import Ultimate from '../../images/ultimate.svg'
 
-const CategoryUltimate = () => (
+const CategoryUltimate = ({ buttonText}) => (
   <CategoryTemplate
+    img={Ultimate}
     title="Ultimate"
-    img
-    price="99.99/year"
+    price="$99.99"
+    buttonText={buttonText}
+    year
   />
 )
 
