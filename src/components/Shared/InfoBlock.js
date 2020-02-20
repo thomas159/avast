@@ -9,9 +9,10 @@ import cleanUpPremium from '../../images/clean-up-premium.svg'
 import vpn from '../../images/vpn.svg'
 
 const Wrap = styled.div`
+  position: relative;
   display: flex;
-  width: 100%;
   height: 100%;
+  flex: 0 0 100%;
   align-items: center;
   justify-content: center;
   padding: 10px;
@@ -24,7 +25,7 @@ const Wrap = styled.div`
 `
 
 const TextWrap = styled.div`
-  width: 100%;
+  flex: 1;
   ${media.lg`
     flex: 1;
     padding: ${props => props.svg ? '0 0 0 40px' : '0' };
@@ -45,21 +46,40 @@ const Tooltip = styled.div`
   text-align: center;
   padding: 10px;
   border-radius: 6px; 
-  position: absolute;
-  left: -134px;
-  bottom: 30px;
-  z-index: 1;
-  &:after {
-    border-left: solid transparent 5px;
-    border-right: solid transparent 5px;
-    border-top: solid #000 5px;
-    bottom: -5px;
-    content: " ";
-    height: 0;
-    left: 50%;
-    margin-left: -13px;
+  ${media.xs`
     position: absolute;
-    width: 0;
+    left: -310px;
+    bottom: -15px;
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;    
+      width: 0px;        
+      right: 0;
+      top: 50%;
+      border: 5px solid transparent;
+      border-right: 0;
+      border-left: 5px solid ${palette.plum};
+      transform: translate(calc(100% + 0px), -50%);  
+  `}
+  
+    ${media.lg`
+    left: -142px;
+    bottom: 30px;
+    z-index: 1;
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;    
+      width: 0px;        
+      left: 50%;
+      bottom: 0;
+      border: 5px solid transparent;
+      border-bottom: 0;
+      border-top: 5px solid ${palette.plum};
+      transform: translate(-50%, calc(100% + 0px));
+    }
+      `}
 `
 
 const InfoSvg = styled.div`
@@ -82,13 +102,14 @@ const Title = styled.div`
   text-align: left;
   justify-content: flex-start;
   color: ${palette.plum};
-  font-size: ${palette.textLarge};
+  font-size: ${palette.textBody3};
+  line-height: ${palette.textBody3};
   font-weight: 700;
   &::first-letter {
     text-transform: uppercase;
   }
   ${media.lg`
-    font-size: ${palette.textMedium};
+    font-size: ${palette.textBody3};
     padding: 0 0 10px 0;
   `}
 `
@@ -107,7 +128,12 @@ const Text = styled.div`
 
 const Svg = styled.img`
   position: absolute;
-  left: 0;
+  left: -30px;
+  top: 20px;
+  border: 1px solid ${palette.border};
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: -1px 28px 32px 0px rgba(8,4,43,0.1);
 `
 
 const SvgBlock = styled.div`
@@ -133,7 +159,7 @@ const InfoBlock = ({ info, svg, title, text }) => (
       <Tooltip> Tootip text shouldn't be longer than two lines, but sometimes it's unavoidable</Tooltip>
         </InfoSvg >
     </InfoWrap>
-    }
+    } 
   </Wrap>
 )
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import data from '../../data'
 import styled from 'styled-components'
 import Container from '../Shared/Container'
@@ -9,16 +9,21 @@ import CategoryPremiumSecuritySingle from '../Shared/CategoryPremiumSecuritySing
 import CategoryPremiumSecurityMulti from '../Shared/CategoryPremiumSecurityMulti'
 import CategoryUltimate from '../Shared/CategoryUltimate'
 import StickyBlock from '../Shared/StickyBlock'
+import StickyBlockMobile from '../Shared/StickyBlockMobile'
 import InfoBlock from '../Shared/InfoBlock'
-import { StickyContainer, Sticky } from 'react-sticky';
-import { BrowserRouter as router, Router } from 'react-router-dom'
 import TableFooter from '../Shared/TableFooter'
 import media from '../Shared/Media'
 import Carousel from '../Shared/Carousel'
+import Download from '../../images/download-m.svg'
+import Store from '../../images/store.svg'
 
 const Table = styled.table` 
+  position: relative;
   width: 100%;
-  margin: 50px 0 0 0;
+  ${media.lg`
+    margin: 50px 0 1000px 0;
+  `}
+
 `
 const Tr = styled.tr`
   display: flex;
@@ -39,9 +44,12 @@ const Tbody = styled.tbody`
 const Td = styled.td`
   display: flex;
   padding: 0;
+  flex-direction: ${props => props.direction && 'column'};
+  background: ${props => props.mobileBg && `${palette.grey03}`};
   border-bottom: 1px solid ${props => props.noBorder ? 'none' : `${palette.grey10}`};
   ${media.lg` 
     border-bottom: 1px solid ${palette.grey10};
+    background: ${props => props.mobileBg && '#fff'};
   `}
 
   &:nth-child(1){
@@ -78,7 +86,6 @@ const Td = styled.td`
       border-left: 1px solid ${palette.avast};
       border-right: 1px solid ${palette.avast};
     `}
-    
   }
   &:nth-child(4){
     border-bottom: 1px solid ${palette.grey10};
@@ -108,6 +115,10 @@ const Td = styled.td`
 
 const TdRecommended = styled.td`
   display: flex;
+  border-left: 0px solid ${palette.avast};
+  border-right: 0px solid ${palette.avast};
+  border-top: 0px solid ${palette.avast};
+  border-bottom: 1px solid ${palette.grey10};
   ${props => props.colCount === 2 && 'flex: 0 0 50%'};
   ${props => props.colCount === 3 && 'flex: 0 0 33.33%'};
   ${props => props.colCount === 4 && 'flex: 0 0 25%'};
@@ -115,76 +126,118 @@ const TdRecommended = styled.td`
     ${props => props.colCount === 2 && 'flex: 0 0 50%'};
     ${props => props.colCount === 3 && 'flex: 0 0 33.33%'};
     ${props => props.colCount === 4 && 'flex: 0 0 17%'};
+    border-left: 1px solid ${palette.avast};
+    border-right: 1px solid ${palette.avast};
+    border-top: 1px solid ${palette.avast};
+    border-bottom: 1px solid ${palette.grey10};
+    &::before {
+      content: "Recommended";
+      position: absolute;
+      display: flex;
+      top: -10px;
+      left: calc(50% - 50px);
+      text-transform: uppercase;
+      width: 100px;
+      height: 20px;
+      color: #fff;
+      font-size: ${palette.textBody5};
+      lineHeight: ${palette.lineHeight4};
+      background: ${palette.avast};
+      border-radius: 10px;
+      align-items: center;
+      justify-content: center
+    }
   `}
   padding: 0;
   position: relative;
-  border-left: 1px solid ${palette.avast};
-  border-right: 1px solid ${palette.avast};
-  border-top: 1px solid ${palette.avast};
-  &::before {
-    content: "Recommended";
-    position: absolute;
-    display: flex;
-    top: -10px;
-    left: calc(50% - 50px);
-    text-transform: uppercase;
-    width: 100px;
-    height: 20px;
-    color: #fff;
-    font-size: ${palette.textExtraSmall};
-    background: ${palette.avast};
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-  }
 `
 
-const H1 = styled.h1`
-  font-size: ${palette.textExtraLarge};
+const H2 = styled.h2`
+  font-size: ${palette.textH2};
+  line-height: ${palette.lineHeightH2};
+  margin: 10px;
+  text-align: left;
 `
 
 const HideDesktop = styled.div`
-  visibility: visible;
-  width: 100%;
+  display: flex;
+  margin: 20px 0 0 0;
   ${media.lg`
-    visibility: hidden;
+    display: none;
   `}
 `
 
-const HideMobile = styled.div`
-  display: none;
-  ${media.lg`
-    visibility: visible;
-  `}
-`
 const AntiSpam = styled.span`
   visibility: hidden;
   ${media.lg`
     visibility: visible;
+    padding: 20px 0 0 0;
+    color: ${palette.purple};
   `}
 `
 
 const Home = () => {
+  const [isVisible, setIsVisible] = useState(false)
+  const [isVisibleDesktop, setIsVisibleDesktop] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1060)
+ 
+  const displayWindowSize = () => {
+    let w = window.innerWidth;
+    if(w >= 1060) {
+      return setIsDesktop(true)
+    } else {
+      return setIsDesktop(false)
+    }    
+  }
+  
+  const UpdateScrollPosition = useCallback(() => {
+    const scrollPos = window.scrollY
+    if( isDesktop && scrollPos < 520) {
+      return setIsVisibleDesktop(false)
+    }else if ((isDesktop && scrollPos >= 520) && (isDesktop && scrollPos <= 1350)) {
+      return setIsVisibleDesktop(true)
+    }else if (isDesktop && scrollPos > 1350) {
+      return setIsVisibleDesktop(false)
+    } else if(!isDesktop && scrollPos < 600) {
+      return setIsVisible(false)
+    }else if ((!isDesktop && scrollPos >= 600) && (!isDesktop && scrollPos <= 3350)) {
+      return setIsVisible(true)
+    }else if (!isDesktop && scrollPos > 3350) {
+      return setIsVisible(false)
+    }
+  }, [isDesktop]);
+  
+  useEffect(() => {
+    displayWindowSize()
+    window.addEventListener("scroll", UpdateScrollPosition);
+    window.addEventListener("resize", displayWindowSize);
+    return () => window.removeEventListener("scroll", UpdateScrollPosition);
+  }, [UpdateScrollPosition]);
+
+
   return (
-    <Container>
+    <React.Fragment>
+        {isVisible && <StickyBlockMobile />}
+        {isVisibleDesktop && <StickyBlock />}
         <Table>
           <Thead>
             <Tr>
-              <Td noBorder colCount={4}>
-                <HideMobile><H1>Your protection, your way</H1></HideMobile>
+              <Td mobileBg direction="true" noBorder colCount={4}>
+                <H2>Your protection,</H2>
+                <H2>your way</H2>
                 <HideDesktop><Carousel /></HideDesktop>
               </Td>
               <Td colCount={4}>
-                <CategoryFreeAntiVirus />
+                <CategoryFreeAntiVirus placeholder="true" learnMore />
               </Td>
               <TdRecommended colCount={4}>
-                <CategoryPremiumSecuritySingle />
+                <CategoryPremiumSecuritySingle placeholder="true" learnMore />
               </TdRecommended>
               <Td colCount={4}>
-              <CategoryPremiumSecurityMulti />
+              <CategoryPremiumSecurityMulti placeholder="true" learnMore />
               </Td>
               <Td colCount={4}>
-                <CategoryUltimate />
+                <CategoryUltimate placeholder="true" learnMore />
               </Td>
             </Tr>
           </Thead>
@@ -212,24 +265,24 @@ const Home = () => {
             <Thead>
             <Tr>
               <Td colCount={4} noBorder>
-                <AntiSpam>* anti spam is available as a seperate free download.</AntiSpam>
+                <AntiSpam>* Anti-spam is available as a seperate free download.</AntiSpam>
               </Td>
               <Td colCount={4}>
-                <TableFooter buttonText="free download"  to="#" linkText="Free Forever"/>
+                <TableFooter img={Download} buttonText="free download"  to="#" linkText="Free Forever"/>
               </Td>
               <Td colCount={4}>
-              <TableFooter buttonText="buy now" to="#" linkText="try for 30 days" underline />
+              <TableFooter img={Store} buttonText="buy now" to="#" linkText="try for 30 days" underline="true" />
               </Td>
               <Td colCount={4}>
-                <TableFooter buttonText="buy now" to="#" linkText="try for 30 days on pc" underline />
+                <TableFooter img={Store} buttonText="buy now" to="#" linkText="try for 30 days on pc" underline="true"/>
               </Td>
               <Td colCount={4}>
-                <TableFooter buttonText="buy now" to="#" />  
+                <TableFooter img={Store} buttonText="buy now" to="#" />  
               </Td>
             </Tr>
           </Thead>
         </Table>
-    </Container>
+    </React.Fragment>
   )
 }
 

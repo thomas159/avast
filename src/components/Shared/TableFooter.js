@@ -25,13 +25,14 @@ const LinkWrap = styled.div`
   width: 100%;
   justify-content: center;
   align-items: flex-start;
+  padding: 0 10px;
 `
 
 
-const TableFooter = ({ buttonText, to, linkText, underline }) => (
+const TableFooter = ({ img, buttonText, to, linkText, underline }) => (
   <Wrap>
     <ButtonWrap>
-      <Button>
+      <Button to={to} img={img}>
         {buttonText}
       </Button>
     </ButtonWrap>

@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import * as palette from '../../variables'
-import placeholder from '../../images/img@3x.png'
+import Placeholder from '../../images/img@3x.png'
 import Button from '../Shared/Button'
-import { Link } from 'react-router-dom'
+import A from '../Shared/A'
+import media from '../Shared/Media'
 
 const Wrap = styled.div`
   display: flex;
@@ -12,11 +13,13 @@ const Wrap = styled.div`
   align-items: center;
 `
 
-const Title = styled.h2`
+const Title = styled.span`
   display: flex;
-  font-size: ${palette.textLarge};
+  font-size: ${palette.textBody1};
   text-transform: capitalize;
   flex: 1;
+  padding: 20px 0 30px 0;
+  
 `
 
 const InfoWrap = styled.div`
@@ -24,40 +27,68 @@ const InfoWrap = styled.div`
   flex-direction: column;
   height: auto;
   width: 100%;
+  justify-content: center;
+  align-items: center;
 `
 
-const Device = styled.h4`
-  font-size: ${palette.textSmall};
-  padding: 10px 0;
+const Device = styled.span`
+  font-size: ${palette.textBody4};
+  color: ${palette.purple};
+  margin: 0 0 30px 0;
 `
 
-const ImagePlaceholder = styled.img`
-  width: 40px;
+const Svg = styled.img`
+  width: 52px;
+  height: 68px;
+  margin: 40px 0 0 0;
+`
+
+const ImagePlaceholder = styled.div`
+  display: none;
+  ${media.lg`
+    display: flex;
+    padding: 0 30px;
+    margin-bottom: 41px;
+  `}
+`
+const Image = styled.img`
+  width: 100%;
 `
 
 const Price = styled.span`
-  font-size: ${palette.textExtraLarge};
+  font-size: ${palette.textBody3};
+  font-weight: 700;
+  margin: 0 0 25px 0;
+  ${media.lg`
+    font-size:  ${palette.textBody1};
+  `}
 `
 
-const LearnMore = styled(Link)`
+const LearnMore = styled(A)`
   display: block;
   padding: 20px 0;
+  margin: 0 0 72px 0;
 `
 
 const Year = styled.span`
-  font-size: ${palette.textMedium};
+  font-size: ${palette.textBody3};
 `
 
-const CategoryTemplate = ({img, to, title, device, price, buttonText, year}) => {
+const ButtonWrap = styled.div`
+  padding: 0 0 20px 0;
+`
+
+const CategoryTemplate = ({svg, learnMore, placeholder, buttonImg, to, text, title, device, price, buttonText, year}) => {
   return(
     <Wrap>
-      {img && <ImagePlaceholder src={img}></ImagePlaceholder>}
+      <Svg src={svg}></Svg>
       <Title>{title}</Title>
       <InfoWrap>
         <Device>{device}</Device>
+        {placeholder && <ImagePlaceholder><Image src={Placeholder} /></ImagePlaceholder>}
         <Price>{price}{year && <Year>/year</Year>}</Price>
-        {buttonText && <Button to={to}>{buttonText}</Button>}
-        {LearnMore && <LearnMore to="/learnMore">Learn More</LearnMore>}
+        {(buttonText || buttonImg) && <ButtonWrap><Button text={text} img={buttonImg} to={to}>{buttonText}</Button></ButtonWrap>}
+        {learnMore && <LearnMore to="/learnMore">Learn More</LearnMore>}
       </InfoWrap>
     </Wrap>
   )

@@ -4,7 +4,9 @@ import CategoryFreeAntiVirus from './CategoryFreeAntiVirus'
 import CategoryPremiumSecuritySingle from './CategoryPremiumSecuritySingle';
 import CategoryPremiumSecurityMulti from './CategoryPremiumSecurityMulti'
 import CategoryUltimate from './CategoryUltimate'
-import * as palette from '../../variables'
+import Container from '../Shared/Container'
+import Store from '../../images/store.svg'
+import Download from '../../images/download-m.svg'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -17,7 +19,7 @@ const StyledContainer = styled.div`
 
 const Wrap = styled.div`
   display: flex;
-  width: 980px;
+  width: calc( 100% - 20px);
   background: #fff;
   box-shadow: -1px 25px 15px -1px rgba(0,0,0,0.17);
 `
@@ -25,55 +27,38 @@ const Wrap = styled.div`
 const Cell = styled.div`
   display: flex;
   &:nth-child(1) {
-    flex: 0 0 32%;
+    flex: 0 0 25%;
   }
   &:nth-child(2) {
-    flex: 0 0 17%;
+    flex: 0 0 25%;
   }
   &:nth-child(3) {
-    flex: 0 0 17%;
+    flex: 0 0 25%;
   }
   &:nth-child(4) {
-    flex: 0 0 17%;
-  }
-  &:nth-child(5) {
-    flex: 0 0 17%;
+    flex: 0 0 25%;
   }
 `
-const H4 = styled.h4`
-  font-size: ${palette.textH4};
-  text-align: left;
-`
 
-const Tagline = styled.div`
-  padding: 20px;
-`
-
-const StickyBlock = () => {
+const StickyBlockMobile = () => {
   return (
     <StyledContainer>
       <Wrap>
         <Cell>
-          <Tagline>
-            <div><H4>Your Protection,</H4></div>
-            <div><H4>your way</H4></div>
-          </Tagline>
+          <CategoryFreeAntiVirus buttonImg={Download} />
         </Cell>
         <Cell>
-          <CategoryFreeAntiVirus buttonText="Free Download" />
+          <CategoryPremiumSecuritySingle buttonImg={Store} />
         </Cell>
         <Cell>
-          <CategoryPremiumSecuritySingle buttonText="Buy Now" />
+          <CategoryPremiumSecurityMulti buttonImg={Store} />
         </Cell>
         <Cell>
-          <CategoryPremiumSecurityMulti buttonText="Buy Now" />
-        </Cell>
-        <Cell>
-          <CategoryUltimate buttonText="Buy Now" />
+          <CategoryUltimate buttonImg={Store} />
         </Cell>
       </Wrap>
     </StyledContainer>
   )
 }
 
-export default StickyBlock
+export default StickyBlockMobile

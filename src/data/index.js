@@ -103,17 +103,17 @@ const data = [
     text: 'advanced protection for upto 10 devices (PC, MAC, Android and iOS)',
     svg: '',
     colA: false,
-    colB: true,
+    colB: false,
     colC: true,
-    colD: true,
+    colD: false,
   },
   {
     title: 'includes avast cleanup premium',
     text: 'remove hidden junk, free up disk space, and speed up your computer',
     svg: 'cleanUpPremium',
     colA: false,
-    colB: true,
-    colC: true,
+    colB: false,
+    colC: false,
     colD: true,
   },
   {
@@ -121,8 +121,8 @@ const data = [
     text: 'get alerted if your passwords are leaked and log into websites with one click.',
     svg: 'passwordsPremium',
     colA: false,
-    colB: true,
-    colC: true,
+    colB: false,
+    colC: false,
     colD: true,
   },
   {
@@ -130,8 +130,8 @@ const data = [
     text: 'encrypt your internet connection for safe and private browisng',
     svg: 'vpn',
     colA: false,
-    colB: true,
-    colC: true,
+    colB: false,
+    colC: false,
     colD: true,
   }
 ]

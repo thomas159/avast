@@ -10,6 +10,10 @@ const ALink = styled(Link)`
   text-transform: ${props => props.underline ? 'uppercase' : 'capitalize' };
   align-items: center;
   justify-content: center;
+  &:active, &:visited {
+    color: ${palette.purple};
+  }
+  line-height: ${palette.lineHeight4};
 `
 
 const A = ({ children, to, underline }) => (

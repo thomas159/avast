@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route} from 'react-router-dom'
 import Home from './components/Home'
 import { createGlobalStyle } from 'styled-components'
 import * as palette from '../src/variables'
+import 'sanitize.css'
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
@@ -17,7 +18,7 @@ body {
     position: relative;
     font-family: 'Open Sans', sans-serif;
     color: ${palette.plum};
-    font-size: 14px;
+    font-size: ${palette.textBody3};
     line-height: 1;
     background: #fff;
     word-break: normal;
