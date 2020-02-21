@@ -6,6 +6,7 @@ import CategoryPremiumSecurityMulti from './CategoryPremiumSecurityMulti'
 import CategoryUltimate from './CategoryUltimate'
 import * as palette from '../../variables'
 import { buttontexts, protection } from '../../data/texts'
+
 const StyledContainer = styled.div`
   display: flex;
   flex: auto;
@@ -17,7 +18,7 @@ const StyledContainer = styled.div`
 
 const Wrap = styled.div`
   display: flex;
-  width: 980px;
+  width: 1220px;
   background: #fff;
   box-shadow: -1px 25px 15px -1px rgba(0,0,0,0.17);
 `
@@ -46,7 +47,7 @@ const H4 = styled.h4`
 `
 
 const Tagline = styled.div`
-  padding: 20px;
+  padding: 90px 0 0 60px;
 `
 
 const StickyBlock = () => {
@@ -60,7 +61,7 @@ const StickyBlock = () => {
           </Tagline>
         </Cell>
         <Cell>
-          <CategoryFreeAntiVirus buttonText={buttontexts.free} />
+          <CategoryFreeAntiVirus buttonText={buttontexts.freeDownload} />
         </Cell>
         <Cell>
           <CategoryPremiumSecuritySingle buttonText={buttontexts.buyNow} />

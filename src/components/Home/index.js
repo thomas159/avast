@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import data from '../../data'
 import styled from 'styled-components'
-import Container from '../Shared/Container'
 import * as palette from '../../variables'
 import Feature from '../Shared/Feature'
 import CategoryFreeAntiVirus from '../Shared/CategoryFreeAntiVirus'
@@ -22,7 +21,7 @@ const Table = styled.table`
   position: relative;
   width: 100%;
   ${media.lg`
-    margin: 50px 0 1000px 0;
+    margin: 50px 0 100px 0;
   `}
 
 `
@@ -47,10 +46,11 @@ const Td = styled.td`
   padding: 0;
   flex-direction: ${props => props.direction && 'column'};
   background: ${props => props.mobileBg && `${palette.grey03}`};
-  border-bottom: 1px solid ${props => props.noBorder ? 'none' : `${palette.grey10}`};
+  border-bottom:  ${props => props.noBorder ? `0px solid ${palette.grey10}` : ` 1px solid ${palette.grey10}`};
+  border-bottom: ${props => props.borderBottomOrange && `0px solid ${palette.avast}`};
   ${media.lg` 
-    border-bottom: 1px solid ${palette.grey10};
     background: ${props => props.mobileBg && '#fff'};
+    border-bottom: ${props => props.borderBottomOrange && `1px solid ${palette.avast}`};
   `}
 
   &:nth-child(1){
@@ -58,11 +58,9 @@ const Td = styled.td`
     margin: 0 -1px;
     ${media.lg` 
       flex: 0 0 32%;
-      border-bottom: 1px solid ${palette.grey10};
     `}
   }
   &:nth-child(2){
-    border-bottom: 1px solid ${palette.grey10};
     ${props => props.colCount === 2 && 'flex: 0 0 50%'};
     ${props => props.colCount === 3 && 'flex: 0 0 33.33%'};
     ${props => props.colCount === 4 && 'flex: 0 0 25%'};
@@ -75,7 +73,7 @@ const Td = styled.td`
   &:nth-child(3){
     border-left: 0px solid ${palette.avast};
     border-right: 0px solid ${palette.avast};
-    border-bottom: 1px solid ${palette.grey10};
+  
     ${props => props.colCount === 2 && 'flex: 0 0 50%'};
     ${props => props.colCount === 3 && 'flex: 0 0 33.33%'};
     ${props => props.colCount === 4 && 'flex: 0 0 25%'};
@@ -83,13 +81,11 @@ const Td = styled.td`
       ${props => props.colCount === 2 && 'flex: 0 0 50%'};
       ${props => props.colCount === 3 && 'flex: 0 0 33.33%'};
       ${props => props.colCount === 4 && 'flex: 0 0 17%'};
-      border-bottom: 1px solid ${palette.grey10};
       border-left: 1px solid ${palette.avast};
       border-right: 1px solid ${palette.avast};
     `}
   }
   &:nth-child(4){
-    border-bottom: 1px solid ${palette.grey10};
     ${props => props.colCount === 2 && 'flex: 0 0 50%'};
     ${props => props.colCount === 3 && 'flex: 0 0 33.33%'};
     ${props => props.colCount === 4 && 'flex: 0 0 25%'};
@@ -97,11 +93,9 @@ const Td = styled.td`
       ${props => props.colCount === 2 && 'flex: 0 0 50%'};
       ${props => props.colCount === 3 && 'flex: 0 0 33.33%'};
       ${props => props.colCount === 4 && 'flex: 0 0 17%'};
-      border-bottom: 1px solid ${palette.grey10};
     `}
   }
   &:nth-child(5){
-    border-bottom: 1px solid ${palette.grey10};
     ${props => props.colCount === 2 && 'flex: 0 0 50%'};
     ${props => props.colCount === 3 && 'flex: 0 0 33.33%'};
     ${props => props.colCount === 4 && 'flex: 0 0 25%'};
@@ -109,7 +103,6 @@ const Td = styled.td`
       ${props => props.colCount === 2 && 'flex: 0 0 50%'};
       ${props => props.colCount === 3 && 'flex: 0 0 33.33%'};
       ${props => props.colCount === 4 && 'flex: 0 0 17%'};
-      border-bottom: 1px solid ${palette.grey10};
     `}
   }
 `
@@ -181,7 +174,7 @@ const Home = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [isVisibleDesktop, setIsVisibleDesktop] = useState(false)
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1060)
- 
+
   const displayWindowSize = () => {
     let w = window.innerWidth;
     if(w >= 1060) {
@@ -206,15 +199,17 @@ const Home = () => {
     }else if (!isDesktop && scrollPos > 3350) {
       return setIsVisible(false)
     }
-  }, [isDesktop]);
+  }, [isDesktop])
   
   useEffect(() => {
     displayWindowSize()
-    window.addEventListener("scroll", UpdateScrollPosition);
-    window.addEventListener("resize", displayWindowSize);
-    return () => window.removeEventListener("scroll", UpdateScrollPosition);
-  }, [UpdateScrollPosition]);
-
+    window.addEventListener("scroll", UpdateScrollPosition)
+    window.addEventListener("resize", displayWindowSize)
+    return () => {
+      window.removeEventListener("scroll", UpdateScrollPosition)
+      window.removeEventListener("resize", displayWindowSize)
+    }
+  }, [UpdateScrollPosition])
 
   return (
     <React.Fragment>
@@ -265,20 +260,60 @@ const Home = () => {
             </Tbody>
             <Thead>
             <Tr>
-              <Td colCount={4} noBorder>
+              <Td 
+                colCount={4} 
+                noBorder 
+                noBorderBottom
+              >
                 <AntiSpam>{antiSpam.antiSpam}</AntiSpam>
               </Td>
-              <Td colCount={4}>
-                <TableFooter img={Download} buttonText={buttontexts.freeDownload}  to="#" linkText={linkTexts.free} />
+              <Td colCount={4} 
+                noBorder 
+                noBorderBottom
+              >
+                <TableFooter 
+                  img={Download} 
+                  buttonText={buttontexts.freeDownload}  
+                  to="#" 
+                  linkText={linkTexts.free} 
+                />
               </Td>
-              <Td colCount={4}>
-              <TableFooter img={Store} buttonText={buttontexts.buyNow} to="#" linkText={linkTexts.try30days} underline="true" />
+              <Td 
+                colCount={4} 
+                noBorder 
+                borderBottomOrange  
+              >
+              <TableFooter 
+                img={Store} 
+                buttonText={buttontexts.buyNow} 
+                to="#" 
+                linkText={linkTexts.try30days} 
+                underline="true"
+              />
               </Td>
-              <Td colCount={4}>
-                <TableFooter img={Store} buttonText={buttontexts.buyNow} to="#" linkText={linkTexts.tryPC} underline="true"/>
+              <Td 
+                colCount={4} 
+                noBorder 
+                noBorderBottom
+              >
+                <TableFooter 
+                  img={Store} 
+                  buttonText={buttontexts.buyNow} 
+                  to="#" 
+                  linkText={linkTexts.tryPC} 
+                  underline="true"
+                />
               </Td>
-              <Td colCount={4}>
-                <TableFooter img={Store} buttonText={buttontexts.buyNow} to="#" />  
+              <Td 
+              colCount={4} 
+              noBorder 
+              noBorderBottom
+              >
+                <TableFooter 
+                  img={Store} 
+                  buttonText={buttontexts.buyNow} 
+                  to="#" 
+                />  
               </Td>
             </Tr>
           </Thead>

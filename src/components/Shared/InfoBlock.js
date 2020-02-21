@@ -130,11 +130,12 @@ const Text = styled.div`
 const Svg = styled.img`
   position: absolute;
   left: -30px;
-  top: 20px;
+  top: 10px;
   border: 1px solid ${palette.border};
   border-radius: 50%;
+  background: #fff;
   padding: 10px;
-  box-shadow: -1px 28px 32px 0px rgba(8,4,43,0.1);
+  box-shadow: -1px 18px 22px 0px rgba(8,4,43,0.1);
 `
 
 const SvgBlock = styled.div`

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import CategoryUltimate from '../Shared/CategoryUltimate'
 import CategoryPremiumSecurityMulti from '../Shared/CategoryPremiumSecurityMulti'
 import CategoryPremiumSecuritySingle from '../Shared/CategoryPremiumSecuritySingle'
 import CategoryFreeAntiVirus from '../Shared/CategoryFreeAntiVirus'

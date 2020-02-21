@@ -10,7 +10,7 @@ export const linkTexts = {
 }
   
 export const protection = {
-  yourProtection: "your protection",
+  yourProtection: "Your protection,",
   yourWay: "your way",
 }
 
@@ -21,12 +21,13 @@ export const antiSpam = {
 export const categoryTexts = {
   freeAntiVirus: "free antivirus",
   premiumSecurity: "premium security",
+  ultimate: "ultimate",
   singleDevice: "Single-Device",
   multiDevice: "Multi-Device"
 }
 
 export const prices = {
-  free: "free",
+  free: "Free",
   premiumPriceSingle: "$69.99",
   premiumPriceMulti: "$89.99",
   ultimate: "$99.99"

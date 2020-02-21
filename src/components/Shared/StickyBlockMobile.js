@@ -4,7 +4,6 @@ import CategoryFreeAntiVirus from './CategoryFreeAntiVirus'
 import CategoryPremiumSecuritySingle from './CategoryPremiumSecuritySingle';
 import CategoryPremiumSecurityMulti from './CategoryPremiumSecurityMulti'
 import CategoryUltimate from './CategoryUltimate'
-import Container from '../Shared/Container'
 import Store from '../../images/store.svg'
 import Download from '../../images/download-m.svg'
 
@@ -19,7 +18,7 @@ const StyledContainer = styled.div`
 
 const Wrap = styled.div`
   display: flex;
-  width: calc( 100% - 20px);
+  width: calc( 100% - 80px);
   background: #fff;
   box-shadow: -1px 25px 15px -1px rgba(0,0,0,0.17);
 `

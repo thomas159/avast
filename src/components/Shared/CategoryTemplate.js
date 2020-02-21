@@ -16,6 +16,7 @@ const Wrap = styled.div`
 const Title = styled.span`
   display: flex;
   font-size: ${palette.textBody1};
+  font-weight: 700;
   text-transform: capitalize;
   flex: 1;
   padding: 20px 0 30px 0;
@@ -64,10 +65,12 @@ const Price = styled.span`
   `}
 `
 
+const LearnMoreWrap = styled.div`
+  margin: 0 0 72px 0;
+`
+
 const LearnMore = styled(A)`
   display: block;
-  padding: 20px 0;
-  margin: 0 0 72px 0;
 `
 
 const Year = styled.span`
@@ -88,7 +91,11 @@ const CategoryTemplate = ({svg, learnMore, placeholder, buttonImg, to, text, tit
         {placeholder && <ImagePlaceholder><Image src={Placeholder} /></ImagePlaceholder>}
         <Price>{price}{year && <Year>/year</Year>}</Price>
         {(buttonText || buttonImg) && <ButtonWrap><Button text={text} img={buttonImg} to={to}>{buttonText}</Button></ButtonWrap>}
-        {learnMore && <LearnMore to="/learnMore">Learn More</LearnMore>}
+        {learnMore && 
+          <LearnMoreWrap>
+            <LearnMore underline="true" to="/learnMore">Learn More</LearnMore>
+          </LearnMoreWrap>
+        }
       </InfoWrap>
     </Wrap>
   )
