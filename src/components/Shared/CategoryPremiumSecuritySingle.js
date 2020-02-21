@@ -1,6 +1,7 @@
 import React from 'react'
 import CategoryTemplate from './CategoryTemplate'
 import Premium from '../../images/premium.svg'
+import { categoryTexts, prices } from '../../data/texts'
 
 const CategoryPremiumSecuritySingle = ({ buttonText, buttonImg, learnMore, placeholder, text }) => (
   <CategoryTemplate
@@ -8,9 +9,9 @@ const CategoryPremiumSecuritySingle = ({ buttonText, buttonImg, learnMore, place
     learnMore={learnMore}
     buttonImg={buttonImg}
     placeholder={placeholder}
-    title="premium security"
-    device="Single-Device"
-    price="$69.99"
+    title={categoryTexts.premiumSecurity}
+    device={categoryTexts.singleDevice}
+    price={prices.premiumPriceSingle}
     buttonText={buttonText}
     text={text}
     to="/"

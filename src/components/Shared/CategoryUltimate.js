@@ -1,6 +1,7 @@
 import React from 'react'
 import CategoryTemplate from './CategoryTemplate'
 import Ultimate from '../../images/ultimate.svg'
+import { categoryTexts, prices } from '../../data/texts'
 
 const CategoryUltimate = ({ buttonText, buttonImg, learnMore, placeholder, text }) => (
   <CategoryTemplate
@@ -8,8 +9,8 @@ const CategoryUltimate = ({ buttonText, buttonImg, learnMore, placeholder, text 
     learnMore={learnMore}
     buttonImg={buttonImg}
     placeholder={placeholder}
-    title="Ultimate"
-    price="$99.99"
+    title={categoryTexts.Ultimate}
+    price={prices.ultimate}
     buttonText={buttonText}
     text={text}
     to="/"

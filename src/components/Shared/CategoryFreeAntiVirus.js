@@ -1,6 +1,7 @@
 import React from 'react'
 import CategoryTemplate from './CategoryTemplate'
 import Free from '../../images/free.svg'
+import { categoryTexts, prices } from '../../data/texts'
 
 const CategoryFreeAntiVirus = ({ buttonText, buttonImg, learnMore, placeholder, text}) => (
   <CategoryTemplate
@@ -8,8 +9,8 @@ const CategoryFreeAntiVirus = ({ buttonText, buttonImg, learnMore, placeholder, 
     learnMore={learnMore}
     buttonImg={buttonImg}
     placeholder={placeholder}
-    title="Free Antivirus"
-    price="Free"
+    title={categoryTexts.freeAntiVirus}
+    price={prices.free}
     buttonText={buttonText}
     text={text}
     to="/"

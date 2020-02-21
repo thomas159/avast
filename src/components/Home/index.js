@@ -16,6 +16,7 @@ import media from '../Shared/Media'
 import Carousel from '../Shared/Carousel'
 import Download from '../../images/download-m.svg'
 import Store from '../../images/store.svg'
+import { buttontexts, linkTexts, protection, antiSpam } from '../../data/texts'
 
 const Table = styled.table` 
   position: relative;
@@ -223,8 +224,8 @@ const Home = () => {
           <Thead>
             <Tr>
               <Td mobileBg direction="true" noBorder colCount={4}>
-                <H2>Your protection,</H2>
-                <H2>your way</H2>
+                <H2>{protection.yourProtection}</H2>
+                <H2>{protection.yourWay}</H2>
                 <HideDesktop><Carousel /></HideDesktop>
               </Td>
               <Td colCount={4}>
@@ -265,19 +266,19 @@ const Home = () => {
             <Thead>
             <Tr>
               <Td colCount={4} noBorder>
-                <AntiSpam>* Anti-spam is available as a seperate free download.</AntiSpam>
+                <AntiSpam>{antiSpam.antiSpam}</AntiSpam>
               </Td>
               <Td colCount={4}>
-                <TableFooter img={Download} buttonText="free download"  to="#" linkText="Free Forever"/>
+                <TableFooter img={Download} buttonText={buttontexts.freeDownload}  to="#" linkText={linkTexts.free} />
               </Td>
               <Td colCount={4}>
-              <TableFooter img={Store} buttonText="buy now" to="#" linkText="try for 30 days" underline="true" />
+              <TableFooter img={Store} buttonText={buttontexts.buyNow} to="#" linkText={linkTexts.try30days} underline="true" />
               </Td>
               <Td colCount={4}>
-                <TableFooter img={Store} buttonText="buy now" to="#" linkText="try for 30 days on pc" underline="true"/>
+                <TableFooter img={Store} buttonText={buttontexts.buyNow} to="#" linkText={linkTexts.tryPC} underline="true"/>
               </Td>
               <Td colCount={4}>
-                <TableFooter img={Store} buttonText="buy now" to="#" />  
+                <TableFooter img={Store} buttonText={buttontexts.buyNow} to="#" />  
               </Td>
             </Tr>
           </Thead>

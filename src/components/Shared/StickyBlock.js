@@ -5,7 +5,7 @@ import CategoryPremiumSecuritySingle from './CategoryPremiumSecuritySingle';
 import CategoryPremiumSecurityMulti from './CategoryPremiumSecurityMulti'
 import CategoryUltimate from './CategoryUltimate'
 import * as palette from '../../variables'
-
+import { buttontexts, protection } from '../../data/texts'
 const StyledContainer = styled.div`
   display: flex;
   flex: auto;
@@ -55,21 +55,21 @@ const StickyBlock = () => {
       <Wrap>
         <Cell>
           <Tagline>
-            <div><H4>Your Protection,</H4></div>
-            <div><H4>your way</H4></div>
+            <div><H4>{protection.yourProtection}</H4></div>
+            <div><H4>{protection.yourWay}</H4></div>
           </Tagline>
         </Cell>
         <Cell>
-          <CategoryFreeAntiVirus buttonText="Free Download" />
+          <CategoryFreeAntiVirus buttonText={buttontexts.free} />
         </Cell>
         <Cell>
-          <CategoryPremiumSecuritySingle buttonText="Buy Now" />
+          <CategoryPremiumSecuritySingle buttonText={buttontexts.buyNow} />
         </Cell>
         <Cell>
-          <CategoryPremiumSecurityMulti buttonText="Buy Now" />
+          <CategoryPremiumSecurityMulti buttonText={buttontexts.buyNow} />
         </Cell>
         <Cell>
-          <CategoryUltimate buttonText="Buy Now" />
+          <CategoryUltimate buttonText={buttontexts.buyNow} />
         </Cell>
       </Wrap>
     </StyledContainer>

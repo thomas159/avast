@@ -7,6 +7,7 @@ import media from '../Shared/Media'
 import passwordsPremium from '../../images/passwords-premium.svg'
 import cleanUpPremium from '../../images/clean-up-premium.svg'
 import vpn from '../../images/vpn.svg'
+import { tooltip } from '../../data/texts'
 
 const Wrap = styled.div`
   position: relative;
@@ -156,7 +157,7 @@ const InfoBlock = ({ info, svg, title, text }) => (
     </TextWrap>
     {info && <InfoWrap>
       <InfoSvg bg={Info} hover={InfoHover}>
-      <Tooltip> Tootip text shouldn't be longer than two lines, but sometimes it's unavoidable</Tooltip>
+      <Tooltip>{tooltip.tooltip}</Tooltip>
         </InfoSvg >
     </InfoWrap>
     } 
