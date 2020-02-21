@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import CategoryFreeAntiVirus from './CategoryFreeAntiVirus'
-import CategoryPremiumSecuritySingle from './CategoryPremiumSecuritySingle';
+import CategoryPremiumSecuritySingle from './CategoryPremiumSecuritySingle'
 import CategoryPremiumSecurityMulti from './CategoryPremiumSecurityMulti'
 import CategoryUltimate from './CategoryUltimate'
 import Store from '../../images/store.svg'
@@ -18,9 +18,9 @@ const StyledContainer = styled.div`
 
 const Wrap = styled.div`
   display: flex;
-  width: calc( 100% - 80px);
+  width: calc(100% - 80px);
   background: #fff;
-  box-shadow: -1px 25px 15px -1px rgba(0,0,0,0.17);
+  box-shadow: -1px 25px 15px -1px rgba(0, 0, 0, 0.17);
 `
 
 const Cell = styled.div`

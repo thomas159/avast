@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import CategoryPremiumSecurityMulti from '../Shared/CategoryPremiumSecurityMulti'
 import CategoryPremiumSecuritySingle from '../Shared/CategoryPremiumSecuritySingle'
 import CategoryFreeAntiVirus from '../Shared/CategoryFreeAntiVirus'
@@ -15,9 +15,9 @@ const Wrap = styled.div`
 `
 
 const Grid = styled.div`
-display: flex;
-justify-content: center;
-width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 `
 
 const Cell = styled.div`
@@ -42,9 +42,9 @@ const Cell = styled.div`
 const Placeholder = styled.div`
   position: relative;
   &::before {
-    content: "${props => props.recommended ? 'Recommended' : ''}";
+    content: "${props => (props.recommended ? 'Recommended' : '')}";
     position: absolute;
-    display: ${props => props.recommended ? 'flex' : 'none'};
+    display: ${props => (props.recommended ? 'flex' : 'none')};
     top: -10px;
     left: calc(50% - 50px);
     text-transform: uppercase;
@@ -130,48 +130,62 @@ const Dot = styled.button`
   border: 0;
   padding: 0;
   margin: 0;
-  background: ${props => props.active ? `${palette.avast}` : '#A19DBD'};
+  background: ${props => (props.active ? `${palette.avast}` : '#A19DBD')};
 `
 
 const Carousel = () => {
   const items = [
-    {id: 1, item: <CategoryPremiumSecurityMulti text="true" buttonText="buy now" to="#" />,  recommended: true},
-    {id: 2, item: <CategoryFreeAntiVirus text="true" buttonText="buy now" to="#" />, recommended: false},
-    {id: 3, item: <CategoryPremiumSecuritySingle />, recommended: false},
-  ] 
+    {
+      id: 1,
+      item: (
+        <CategoryPremiumSecurityMulti text="true" buttonText="buy now" to="#" />
+      ),
+      recommended: true,
+    },
+    {
+      id: 2,
+      item: <CategoryFreeAntiVirus text="true" buttonText="buy now" to="#" />,
+      recommended: false,
+    },
+    { id: 3, item: <CategoryPremiumSecuritySingle />, recommended: false },
+  ]
 
   const [activeItem, setActiveItem] = useState(1)
-  const nextItem = (activeItem) => {
+  const nextItem = activeItem => {
     setActiveItem(activeItem < items.length ? activeItem + 1 : activeItem)
   }
-  
-  const prevItem = (activeItem) => {
-    setActiveItem(activeItem === 1 ? activeItem : activeItem -1 )
+
+  const prevItem = activeItem => {
+    setActiveItem(activeItem === 1 ? activeItem : activeItem - 1)
   }
 
-  return(
+  return (
     <Wrap>
       <Grid>
-      <Cell>
-        <BoxLeft />
-          <ButtonWrapLeft> 
-            <Button rotate="true" bg={Next} onClick={() => prevItem(activeItem)} />
+        <Cell>
+          <BoxLeft />
+          <ButtonWrapLeft>
+            <Button
+              rotate="true"
+              bg={Next}
+              onClick={() => prevItem(activeItem)}
+            />
           </ButtonWrapLeft>
         </Cell>
-      <Cell>
-        {items.map((item) => 
-          <Placeholder 
-            key={item.id} 
-            recommended={item.id === activeItem && item.recommended}
-          >
-            {item.id === activeItem && item.item}
-          </Placeholder>
-        )}
-      </Cell>
-      <Cell>
-        <BoxRight />
-          <ButtonWrapRight> 
-            <Button bg={Next} onClick={() => nextItem(activeItem)}/>
+        <Cell>
+          {items.map(item => (
+            <Placeholder
+              key={item.id}
+              recommended={item.id === activeItem && item.recommended}
+            >
+              {item.id === activeItem && item.item}
+            </Placeholder>
+          ))}
+        </Cell>
+        <Cell>
+          <BoxRight />
+          <ButtonWrapRight>
+            <Button bg={Next} onClick={() => nextItem(activeItem)} />
           </ButtonWrapRight>
         </Cell>
       </Grid>

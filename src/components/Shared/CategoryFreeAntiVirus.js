@@ -3,7 +3,13 @@ import CategoryTemplate from './CategoryTemplate'
 import Free from '../../images/free.svg'
 import { categoryTexts, prices } from '../../data/texts'
 
-const CategoryFreeAntiVirus = ({ buttonText, buttonImg, learnMore, placeholder, text}) => (
+const CategoryFreeAntiVirus = ({
+  buttonText,
+  buttonImg,
+  learnMore,
+  placeholder,
+  text,
+}) => (
   <CategoryTemplate
     svg={Free}
     learnMore={learnMore}

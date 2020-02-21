@@ -3,7 +3,13 @@ import CategoryTemplate from './CategoryTemplate'
 import Premium from '../../images/premium.svg'
 import { categoryTexts, prices } from '../../data/texts'
 
-const CategoryPremiumSecuritySingle = ({ buttonText, buttonImg, learnMore, placeholder, text }) => (
+const CategoryPremiumSecuritySingle = ({
+  buttonText,
+  buttonImg,
+  learnMore,
+  placeholder,
+  text,
+}) => (
   <CategoryTemplate
     svg={Premium}
     learnMore={learnMore}

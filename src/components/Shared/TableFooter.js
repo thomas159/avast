@@ -28,7 +28,6 @@ const LinkWrap = styled.div`
   padding: 0 10px;
 `
 
-
 const TableFooter = ({ img, buttonText, to, linkText, underline }) => (
   <Wrap>
     <ButtonWrap>
@@ -37,7 +36,9 @@ const TableFooter = ({ img, buttonText, to, linkText, underline }) => (
       </Button>
     </ButtonWrap>
     <LinkWrap>
-      <A to={to} underline={underline}>{linkText}</A>
+      <A to={to} underline={underline}>
+        {linkText}
+      </A>
     </LinkWrap>
   </Wrap>
 )

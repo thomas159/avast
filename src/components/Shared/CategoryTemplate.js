@@ -20,7 +20,6 @@ const Title = styled.span`
   text-transform: capitalize;
   flex: 1;
   padding: 20px 0 30px 0;
-  
 `
 
 const InfoWrap = styled.div`
@@ -81,21 +80,48 @@ const ButtonWrap = styled.div`
   padding: 0 0 20px 0;
 `
 
-const CategoryTemplate = ({svg, learnMore, placeholder, buttonImg, to, text, title, device, price, buttonText, year}) => {
-  return(
+const CategoryTemplate = ({
+  svg,
+  learnMore,
+  placeholder,
+  buttonImg,
+  to,
+  text,
+  title,
+  device,
+  price,
+  buttonText,
+  year,
+}) => {
+  return (
     <Wrap>
       <Svg src={svg}></Svg>
       <Title>{title}</Title>
       <InfoWrap>
         <Device>{device}</Device>
-        {placeholder && <ImagePlaceholder><Image src={Placeholder} /></ImagePlaceholder>}
-        <Price>{price}{year && <Year>/year</Year>}</Price>
-        {(buttonText || buttonImg) && <ButtonWrap><Button text={text} img={buttonImg} to={to}>{buttonText}</Button></ButtonWrap>}
-        {learnMore && 
+        {placeholder && (
+          <ImagePlaceholder>
+            <Image src={Placeholder} />
+          </ImagePlaceholder>
+        )}
+        <Price>
+          {price}
+          {year && <Year>/year</Year>}
+        </Price>
+        {(buttonText || buttonImg) && (
+          <ButtonWrap>
+            <Button text={text} img={buttonImg} to={to}>
+              {buttonText}
+            </Button>
+          </ButtonWrap>
+        )}
+        {learnMore && (
           <LearnMoreWrap>
-            <LearnMore underline="true" to="/learnMore">Learn More</LearnMore>
+            <LearnMore underline="true" to="/learnMore">
+              Learn More
+            </LearnMore>
           </LearnMoreWrap>
-        }
+        )}
       </InfoWrap>
     </Wrap>
   )

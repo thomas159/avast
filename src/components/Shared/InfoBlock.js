@@ -29,7 +29,7 @@ const TextWrap = styled.div`
   flex: 1;
   ${media.lg`
     flex: 1;
-    padding: ${props => props.svg ? '0 0 0 40px' : '0' };
+    padding: ${props => (props.svg ? '0 0 0 40px' : '0')};
   `}
 `
 
@@ -46,7 +46,7 @@ const Tooltip = styled.div`
   color: #fff;
   text-align: center;
   padding: 10px;
-  border-radius: 6px; 
+  border-radius: 6px;
   ${media.xs`
     position: absolute;
     left: -310px;
@@ -63,8 +63,8 @@ const Tooltip = styled.div`
       border-left: 5px solid ${palette.plum};
       transform: translate(calc(100% + 0px), -50%);  
   `}
-  
-    ${media.lg`
+
+  ${media.lg`
     left: -142px;
     bottom: 30px;
     z-index: 1;
@@ -89,13 +89,14 @@ const InfoSvg = styled.div`
   background: url(${props => props.bg});
   width: 16px;
   height: 16px;
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     background: url(${props => props.hover});
     ${Tooltip} {
       visibility: visible;
     }
   }
-  
 `
 
 const Title = styled.div`
@@ -121,7 +122,7 @@ const Text = styled.div`
   color: ${palette.purple};
   &::first-letter {
     text-transform: uppercase;
-  } 
+  }
   ${media.lg`
     display: block;
   `}
@@ -135,7 +136,7 @@ const Svg = styled.img`
   border-radius: 50%;
   background: #fff;
   padding: 10px;
-  box-shadow: -1px 18px 22px 0px rgba(8,4,43,0.1);
+  box-shadow: -1px 18px 22px 0px rgba(8, 4, 43, 0.1);
 `
 
 const SvgBlock = styled.div`
@@ -148,20 +149,21 @@ const SvgBlock = styled.div`
 const InfoBlock = ({ info, svg, title, text }) => (
   <Wrap>
     <SvgBlock>
-    {svg === 'passwordsPremium' &&<Svg src={passwordsPremium} />}
-    {svg === 'cleanUpPremium' &&<Svg src={cleanUpPremium} />}
-    {svg === 'vpn' &&<Svg src={vpn} />}
+      {svg === 'passwordsPremium' && <Svg src={passwordsPremium} />}
+      {svg === 'cleanUpPremium' && <Svg src={cleanUpPremium} />}
+      {svg === 'vpn' && <Svg src={vpn} />}
     </SvgBlock>
     <TextWrap svg={svg}>
       <Title>{title}</Title>
       <Text>{text}</Text>
     </TextWrap>
-    {info && <InfoWrap>
-      <InfoSvg bg={Info} hover={InfoHover}>
-      <Tooltip>{tooltip.tooltip}</Tooltip>
-        </InfoSvg >
-    </InfoWrap>
-    } 
+    {info && (
+      <InfoWrap>
+        <InfoSvg bg={Info} hover={InfoHover}>
+          <Tooltip>{tooltip.tooltip}</Tooltip>
+        </InfoSvg>
+      </InfoWrap>
+    )}
   </Wrap>
 )
 

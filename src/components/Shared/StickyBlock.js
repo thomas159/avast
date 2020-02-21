@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import CategoryFreeAntiVirus from './CategoryFreeAntiVirus'
-import CategoryPremiumSecuritySingle from './CategoryPremiumSecuritySingle';
+import CategoryPremiumSecuritySingle from './CategoryPremiumSecuritySingle'
 import CategoryPremiumSecurityMulti from './CategoryPremiumSecurityMulti'
 import CategoryUltimate from './CategoryUltimate'
 import * as palette from '../../variables'
@@ -20,7 +20,7 @@ const Wrap = styled.div`
   display: flex;
   width: 1220px;
   background: #fff;
-  box-shadow: -1px 25px 15px -1px rgba(0,0,0,0.17);
+  box-shadow: -1px 25px 15px -1px rgba(0, 0, 0, 0.17);
 `
 
 const Cell = styled.div`
@@ -41,6 +41,7 @@ const Cell = styled.div`
     flex: 0 0 17%;
   }
 `
+
 const H4 = styled.h4`
   font-size: ${palette.textH4};
   text-align: left;
@@ -56,8 +57,12 @@ const StickyBlock = () => {
       <Wrap>
         <Cell>
           <Tagline>
-            <div><H4>{protection.yourProtection}</H4></div>
-            <div><H4>{protection.yourWay}</H4></div>
+            <div>
+              <H4>{protection.yourProtection}</H4>
+            </div>
+            <div>
+              <H4>{protection.yourWay}</H4>
+            </div>
           </Tagline>
         </Cell>
         <Cell>

@@ -21,16 +21,18 @@ export const Wrap = styled(Link)`
   background-color: ${palette.avast};
   background-position: center;
   cursor: pointer;
-  font-size: ${props => props.text ? `${palette.textBody4}` : '0'};
+  font-size: ${props => (props.text ? `${palette.textBody4}` : '0')};
   ${media.lg`
     background:${palette.avast};
     font-size: ${palette.textBody4};
-    padding: 10px;
+    padding: 10px; 
   `}
 `
 
 const Button = ({ children, img, text, to }) => (
-  <Wrap to={to} text={text} img={img}>{children}</Wrap>
+  <Wrap to={to} text={text} img={img}>
+    {children}
+  </Wrap>
 )
 
 export default Button

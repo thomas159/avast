@@ -11,14 +11,14 @@ const Wrap = styled.div`
   padding: 30px 0;
   align-items: center;
   justify-content: center;
-  background: ${props => props.showTick ? `${palette.violetLight}` : '#fff' };
+  background: ${props => (props.showTick ? `${palette.violetLight}` : '#fff')};
   ${media.lg`
     height: auto;
   `}
 `
 
 const Feature = ({ showTick }) => (
-  <Wrap showTick={showTick}>{showTick ? <Tick /> : <Cross /> }</Wrap>
+  <Wrap showTick={showTick}>{showTick ? <Tick /> : <Cross />}</Wrap>
 )
 
 export default Feature

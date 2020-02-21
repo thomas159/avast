@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import Container from './components/Shared/Container'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from './components/Home'
 import { createGlobalStyle } from 'styled-components'
 import * as palette from '../src/variables'
@@ -47,10 +47,7 @@ zIndex: 1;
   right: 0;
   z-index: 1;
 }
-
-
 `
-
 
 const App = () => {
   return (
@@ -63,4 +60,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default App
